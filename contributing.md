@@ -13,8 +13,8 @@ Twitter.
 
 Contribution Steps
 ------------------
-1. You can check available tasks in the [Project Board] or the [Organization Board]. Issues with the
-   [help wanted] tag in the `Ready` column are recommended for a first time contribution.
+1. You can check available tasks in the [Organization Board]. Issues with the [help wanted] tag in
+   the `Ready` column are recommended for a first time contribution.
 2. Claim an issue you want to work in with a comment, after that I can assign it to you and move it
    to the `Working` column. If you want to contribute to a non tagged (or a not existing) tasks:
    write a comment, and we'll discuss the scope of the feature.
@@ -31,8 +31,7 @@ Contribution Steps
 7. Bug format: when filing bugs please comply with the [bug template] requirements.
 8. A feature requests should follow the [enhancement template] rules.
 
-[Project Board]: https://github.com/hexagonkt/hexagon/projects/1
-[Organization Board]: https://github.com/orgs/hexagonkt/projects/1
+[Organization Board]: https://github.com/orgs/hexagonkt/projects/2
 [help wanted]: https://github.com/hexagonkt/hexagon/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 [pull request template]: https://github.com/hexagonkt/hexagon/blob/master/.github/pull_request_template.md
 [IntelliJ]: https://www.jetbrains.com/idea

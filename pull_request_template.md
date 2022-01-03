@@ -13,4 +13,4 @@ For the Pull Request to be accepted please check:
 - [ ] The code follow the coding conventions stated at the [contributing.md] file.
 
 [KDoc]: https://kotlinlang.org/docs/kotlin-doc.html
-[contributing.md]: https://github.com/hexagonkt/hexagon/blob/master/contributing.md
+[contributing.md]: https://github.com/hexagonkt/.github/blob/master/contributing.md
