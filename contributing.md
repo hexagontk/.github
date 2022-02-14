@@ -27,9 +27,11 @@ Contribution Steps
    code follows the [Kotlin Coding Conventions], except final brace position in `else`, `catch` and
    `finally` (in its own line). If you use [IntelliJ] and [Editor Config] this will be checked for
    you.
-6. Follow the commit rules defined at the [commit template].
-7. Bug format: when filing bugs please comply with the [bug template] requirements.
-8. A feature requests should follow the [enhancement template] rules.
+6. Packages must have the same folder structure as in Java (to avoid problems with tools and Java
+   module definition).
+7. Follow the commit rules defined at the [commit template].
+8. Bug format: when filing bugs please comply with the [bug template] requirements.
+9. A feature requests should follow the [enhancement template] rules.
 
 [Organization Board]: https://github.com/orgs/hexagonkt/projects/2
 [help wanted]: https://github.com/hexagonkt/hexagon/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
