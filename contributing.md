@@ -1,6 +1,5 @@
 
-Contributing
-============
+# Contributing
 You can contribute code or documentation to the toolkit. This document will guide you through the
 process or picking a task and building the code.
 
@@ -11,8 +10,7 @@ Twitter.
 [Slack]: https://kotlinlang.slack.com/messages/hexagon
 [@hexagon_kt]: https://twitter.com/hexagon_kt
 
-Contribution Steps
-------------------
+## Contribution Steps
 1. You can check available tasks in the [Organization Board]. Issues with the [help wanted] tag in
    the `Ready` column are recommended for a first time contribution.
 2. Claim an issue you want to work in with a comment, after that I can assign it to you and move it
@@ -44,8 +42,7 @@ Contribution Steps
 [enhancement template]: https://github.com/hexagonkt/hexagon/blob/master/.github/ISSUE_TEMPLATE/enhancement.md
 [discussion]: https://github.com/hexagonkt/hexagon/discussions/categories/ideas
 
-Project Structure
------------------
+## Project Structure
 The Hexagon project is composed of several modules. Most of the modules publish libraries for their
 use by other projects (check the [Hexagon Structure] section of the readme file for more details).
 
@@ -57,8 +54,7 @@ project itself. These are internal modules not intended to be directly used by u
 [starters]: https://github.com/hexagonkt/hexagon/blob/master/starters/README.md
 [site]: https://github.com/hexagonkt/hexagon/blob/master/site/README.md
 
-Local Setup
------------
+## Local Setup
 Hexagon build process requires [Docker installed](https://docs.docker.com/engine/install)
 
 You can check the required software, build the project, generate the documentation and install it in
@@ -92,6 +88,9 @@ Other useful Gradle commands (assuming `alias gw='./gradlew'`) are:
 * Documentation: `gw javadoc`
 * Test: `gw test`
 * Run: `gw ${MODULE}:run`
+* Profile Build: `gw ${TASK} --profile`
+* Project Dependencies: `gw dependencyReport` or `gw htmlDependencyReport`
+* Project Tasks: `gw taskReport`
 
 It is recommended that you create a Git pre-push script to check the code before pushing it. As
 this command will be executed before pushing code to the repository (saving you time fixing
@@ -99,16 +98,11 @@ this command will be executed before pushing code to the repository (saving you 
 
 This can be done executing the `setUp` task by running: `./gradlew setUp`
 
-IMPORTANT: For `rabbitmq` container to work properly, you should follow the
-[Docker setup documentation] (inside the "With Docker" section)
+If you want to generate the documentation site, check the Hexagon's site module readme.
 
-If you want to generate the documentation site, check the [site module readme][site]
-
-[Docker setup documentation]: https://www.rabbitmq.com/install-debian.html
 [GitHub Actions]: https://github.com/features/actions
 
-Major Release Checklist
------------------------
+## Major Release Checklist
 1. Release site's dependent projects (`hexagon_extra`)
 2. Publish their packages using the [Nexus Repository Manager]
 3. Merge Hexagon main project to `master` in GitHub

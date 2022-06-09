@@ -6,7 +6,7 @@
 Currently, there is only one published release, and it will get security updates.
 
 | Version | Supported          |
-| ------- | ------------------ |
+|---------|--------------------|
 | 1.x.y   | :white_check_mark: |
 
 ## Reporting a Vulnerability
