@@ -55,7 +55,8 @@ project itself. These are internal modules not intended to be directly used by u
 [site]: https://github.com/hexagonkt/hexagon/blob/master/site/README.md
 
 ## Local Setup
-Hexagon build process requires [Docker installed](https://docs.docker.com/engine/install)
+Hexagon build process requires [Docker installed](https://docs.docker.com/engine/install). The
+project also needs a JDK 11+ to compile.
 
 You can check the required software, build the project, generate the documentation and install it in
 your local repository typing:
