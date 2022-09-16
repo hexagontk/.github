@@ -56,7 +56,7 @@ project itself. These are internal modules not intended to be directly used by u
 
 ## Local Setup
 Hexagon build process requires [Docker installed](https://docs.docker.com/engine/install). The
-project also needs a JDK 11+ to compile.
+project also needs a JDK 11+ to compile
 
 You can check the required software, build the project, generate the documentation and install it in
 your local repository typing:
