@@ -19,5 +19,7 @@ Then *something happened*
 And I expected *this other thing*
 ```
 
-If it is possible, please include or reference the code that produced the error. Also, include the
-stack trace and/or logs if available.
+If it is possible, please include:
+* The code that produced the error (or a link to it)
+* Stack trace of the error and/or logs if available
+* Details on the environment the fail happened (i.e.: the OS)

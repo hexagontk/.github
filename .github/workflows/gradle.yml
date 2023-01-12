@@ -1,0 +1,37 @@
+
+name: Gradle
+
+on:
+  workflow_call:
+    inputs:
+      java:
+        description: Java version used to run Gradle.
+        required: true
+        default: "17"
+
+      java_distribution:
+        description: Java distribution used to run Gradle.
+        required: true
+        default: temurin
+
+      tasks:
+        description: Gradle tasks to execute.
+        required: true
+        default: build
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v3
+      - name: Build Project
+        uses: ./.github/actions/gradle
+        with:
+          java: ${{ inputs.java }}
+          java_distribution: ${{ inputs.java_distribution }}
+          tasks: ${{ inputs.tasks }}
+      - name: Check Build
+        run: ls -AlF core/build
