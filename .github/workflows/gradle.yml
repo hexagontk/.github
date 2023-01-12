@@ -4,11 +4,6 @@ name: Gradle
 on:
   workflow_call:
     inputs:
-      os:
-        type: string
-        description: OS used to run Gradle.
-        default: ubuntu-latest
-
       java:
         type: string
         description: Java version used to run Gradle.
@@ -32,7 +27,6 @@ on:
 jobs:
   gradle:
     name: Gradle ${{ inputs.tasks }}
-    runs-on: ${{ inputs.os }}
     permissions: read-all
     steps:
       - name: Check Out
