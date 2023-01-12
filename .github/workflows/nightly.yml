@@ -1,0 +1,45 @@
+
+name: Nightly
+
+on:
+  schedule:
+    - cron: "59 23 * * *"
+
+jobs:
+  build:
+    defaults:
+      run: { shell: bash }
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+
+    name: Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v3
+        with: { ref: develop }
+      - name: Build Project
+        uses: ./.github/actions/gradle
+      - name: Check Build
+        run: ls -AlF core/build
+
+  test_publishing:
+    defaults:
+      run: { shell: bash }
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+
+    name: Test Publishing (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v3
+        with: { ref: develop }
+      - name: Test Publishing
+        uses: ./.github/actions/gradle
+        with:
+          tasks: publishToMavenLocal -x test
