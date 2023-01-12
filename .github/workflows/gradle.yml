@@ -34,4 +34,4 @@ jobs:
           java_distribution: ${{ inputs.java_distribution }}
           tasks: ${{ inputs.tasks }}
       - name: Check Build
-        run: ls -AlF core/build
+        run: ls -AlF build
