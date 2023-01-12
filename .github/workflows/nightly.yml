@@ -2,8 +2,22 @@
 name: Nightly
 
 on:
-  schedule:
-    - cron: "59 23 * * *"
+  workflow_call:
+    inputs:
+      java:
+        type: string
+        description: Java version used to run Gradle.
+        default: "17"
+
+      java_distribution:
+        type: string
+        description: Java distribution used to run Gradle.
+        default: temurin
+
+      check_directory:
+        type: string
+        description: Directory to check for build execution.
+        default: build
 
 jobs:
   build:
@@ -22,8 +36,10 @@ jobs:
         with: { ref: develop }
       - name: Build Project
         uses: ./.github/actions/gradle
-      - name: Check Build
-        run: ls -AlF core/build
+        with:
+          java: ${{ inputs.java }}
+          java_distribution: ${{ inputs.java_distribution }}
+          check_directory: ${{ inputs.check_directory }}
 
   test_publishing:
     defaults:
@@ -43,3 +59,6 @@ jobs:
         uses: ./.github/actions/gradle
         with:
           tasks: publishToMavenLocal -x test
+          java: ${{ inputs.java }}
+          java_distribution: ${{ inputs.java_distribution }}
+          check_directory: ${{ inputs.check_directory }}
