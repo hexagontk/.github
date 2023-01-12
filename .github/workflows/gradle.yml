@@ -20,8 +20,8 @@ on:
         default: build
 
 jobs:
-  build:
-    name: Build
+  gradle:
+    name: Gradle ${{ inputs.tasks }}
     runs-on: ubuntu-latest
     permissions: read-all
     steps:
