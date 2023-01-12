@@ -7,19 +7,16 @@ on:
       java:
         type: string
         description: Java version used to run Gradle.
-        required: true
         default: "17"
 
       java_distribution:
         type: string
         description: Java distribution used to run Gradle.
-        required: true
         default: temurin
 
       tasks:
         type: string
         description: Gradle tasks to execute.
-        required: true
         default: build
 
 jobs:
