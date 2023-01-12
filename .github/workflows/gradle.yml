@@ -19,6 +19,11 @@ on:
         description: Gradle tasks to execute.
         default: build
 
+      check_directory:
+        type: string
+        description: Directory to check for build execution.
+        default: build
+
 jobs:
   gradle:
     name: Gradle ${{ inputs.tasks }}
@@ -33,5 +38,4 @@ jobs:
           java: ${{ inputs.java }}
           java_distribution: ${{ inputs.java_distribution }}
           tasks: ${{ inputs.tasks }}
-      - name: Check Build
-        run: ls -AlF build
+          check_directory: ${{ inputs.check_directory }}

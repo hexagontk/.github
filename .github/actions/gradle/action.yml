@@ -5,17 +5,18 @@ description: Run a Gradle build executing the supplied tasks.
 inputs:
   java:
     description: Java version used to run Gradle.
-    required: true
     default: "17"
 
   java_distribution:
     description: Java distribution used to run Gradle.
-    required: true
     default: temurin
 
   tasks:
     description: Gradle tasks to execute.
-    required: true
+    default: build
+
+  check_directory:
+    description: Directory to check for build execution.
     default: build
 
 runs:
@@ -31,3 +32,7 @@ runs:
     - if: failure()
       run: ./gradlew --info --stacktrace ${{ inputs.tasks }}
       shell: bash
+    - name: Check Build
+      shell: bash
+      if: ${{ inputs.check_directory != '' }}
+      run: ls -AlF "${{ inputs.check_directory }}"
