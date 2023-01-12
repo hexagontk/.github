@@ -34,13 +34,22 @@ jobs:
     name: Gradle ${{ inputs.tasks }}
     runs-on: ${{ inputs.os }}
     permissions: read-all
+    defaults:
+      run: { shell: bash }
     steps:
       - name: Check Out
         uses: actions/checkout@v3
-      - name: Build Project
-        uses: ./.github/actions/gradle
+      - name: Set up Java
+        uses: actions/setup-java@v3
         with:
-          java: ${{ inputs.java }}
-          java_distribution: ${{ inputs.java_distribution }}
-          tasks: ${{ inputs.tasks }}
-          check_directory: ${{ inputs.check_directory }}
+          java-version: ${{ inputs.java }}
+          distribution: ${{ inputs.java_distribution }}
+          cache: gradle
+      - name: Build Project
+        run: ./gradlew ${{ inputs.tasks }}
+      - name: Diagnose Build
+        if: failure()
+        run: ./gradlew --info --stacktrace ${{ inputs.tasks }}
+      - name: Check Build
+        if: ${{ inputs.check_directory != '' }}
+        run: ls -AlF "${{ inputs.check_directory }}"
