@@ -34,18 +34,18 @@ on:
         description: Directory to check for build execution.
         default: build
 
-# TODO Add 'ref' for 'nightly' and 'token' for write Git commands
-
 jobs:
   gradle:
     name: Gradle ${{ inputs.tasks }}
     runs-on: ${{ inputs.os }}
-#    permissions: read-all
     defaults:
       run: { shell: bash }
     steps:
       - name: Check Out
         uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set Up Java
         uses: actions/setup-java@v3
         with:
