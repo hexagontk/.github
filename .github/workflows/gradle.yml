@@ -9,6 +9,11 @@ on:
         description: OS used to run Gradle.
         default: ubuntu-latest
 
+      ref:
+        type: string
+        description: Branch to check out.
+        default: ${{ github.sha }}
+
       java:
         type: string
         description: Java version used to run Gradle.
@@ -29,11 +34,13 @@ on:
         description: Directory to check for build execution.
         default: build
 
+# TODO Add 'ref' for 'nightly' and 'token' for write Git commands
+
 jobs:
   gradle:
     name: Gradle ${{ inputs.tasks }}
     runs-on: ${{ inputs.os }}
-    permissions: read-all
+#    permissions: read-all
     defaults:
       run: { shell: bash }
     steps:
