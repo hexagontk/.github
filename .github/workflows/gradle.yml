@@ -12,7 +12,7 @@ on:
       ref:
         type: string
         description: Branch to check out.
-        default: ${{ github.sha }}
+        default: ''
 
       java:
         type: string
