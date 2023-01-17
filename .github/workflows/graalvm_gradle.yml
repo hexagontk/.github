@@ -1,0 +1,65 @@
+
+name: Gradle
+
+on:
+  workflow_call:
+    inputs:
+      os:
+        type: string
+        description: OS used to run Gradle.
+        default: ubuntu-latest
+
+      ref:
+        type: string
+        description: Branch to check out.
+        default: ''
+
+      java:
+        type: string
+        description: Java version used to run Gradle.
+        default: "17"
+
+      musl:
+        type: string
+        description: Java version used to run Gradle.
+        default: false
+
+      tasks:
+        type: string
+        description: Gradle tasks to execute.
+        default: build
+
+      check_directory:
+        type: string
+        description: Directory to check for build execution.
+        default: build
+
+jobs:
+  gradle:
+    name: Gradle ${{ inputs.tasks }}
+    runs-on: ${{ inputs.os }}
+    defaults:
+      run: { shell: bash }
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Java
+        uses: graalvm/setup-graalvm@v1
+        with:
+          version: latest
+          java-version: ${{ inputs.java }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          components: native-image,llvm
+          cache: gradle
+          native-image-musl: ${{ inputs.musl }}
+      - name: Build Project
+        run: ./gradlew ${{ inputs.tasks }}
+      - name: Diagnose Build
+        if: failure()
+        run: ./gradlew --info --stacktrace ${{ inputs.tasks }}
+      - name: Check Build
+        if: ${{ inputs.check_directory != '' }}
+        run: ls -AlF "${{ inputs.check_directory }}"
