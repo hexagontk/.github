@@ -32,7 +32,7 @@ on:
       check_directory:
         type: string
         description: Directory to check for build execution.
-        default: build
+        default: ''
 
 jobs:
   gradle:
