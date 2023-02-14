@@ -1,12 +1,12 @@
 
-name: Gradle
+name: Maven
 
 on:
   workflow_call:
     inputs:
       os:
         type: string
-        description: OS used to run Gradle.
+        description: OS used to run Maven.
         default: ubuntu-latest
 
       ref:
@@ -16,17 +16,17 @@ on:
 
       java:
         type: string
-        description: Java version used to run Gradle.
+        description: Java version used to run Maven.
         default: "17"
 
       java_distribution:
         type: string
-        description: Java distribution used to run Gradle.
+        description: Java distribution used to run Maven.
         default: temurin
 
-      tasks:
+      goals:
         type: string
-        description: Gradle tasks to execute.
+        description: Maven goals to execute.
         default: ''
 
       check_directory:
@@ -35,8 +35,8 @@ on:
         default: ''
 
 jobs:
-  gradle:
-    name: Gradle ${{ inputs.tasks }}
+  maven:
+    name: Maven ${{ inputs.goals }}
     runs-on: ${{ inputs.os }}
     defaults:
       run: { shell: bash }
@@ -51,12 +51,12 @@ jobs:
         with:
           java-version: ${{ inputs.java }}
           distribution: ${{ inputs.java_distribution }}
-          cache: gradle
+          cache: maven
       - name: Build Project
-        run: ./gradlew ${{ inputs.tasks }}
+        run: ./mvnw ${{ inputs.goals }}
       - name: Diagnose Build
         if: failure()
-        run: ./gradlew --info --stacktrace ${{ inputs.tasks }}
+        run: ./mvnw --debug ${{ inputs.goals }}
       - name: Check Build
         if: ${{ inputs.check_directory != '' }}
         run: ls -AlF "${{ inputs.check_directory }}"
