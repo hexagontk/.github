@@ -21,13 +21,13 @@ on:
 
       musl:
         type: string
-        description: Java version used to run Gradle.
+        description: Use MUSL libc.
         default: false
 
       tasks:
         type: string
         description: Gradle tasks to execute.
-        default: build
+        default: ''
 
       check_directory:
         type: string
@@ -46,7 +46,7 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Install Java
+      - name: Set Up Java
         uses: graalvm/setup-graalvm@v1
         with:
           version: latest
