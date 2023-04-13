@@ -1,0 +1,65 @@
+
+name: Maven
+
+on:
+  workflow_call:
+    inputs:
+      os:
+        type: string
+        description: OS used to run Maven.
+        default: ubuntu-latest
+
+      ref:
+        type: string
+        description: Branch to check out.
+        default: ''
+
+      java:
+        type: string
+        description: Java version used to run Maven.
+        default: "17"
+
+      musl:
+        type: string
+        description: Use MUSL libc.
+        default: false
+
+      goals:
+        type: string
+        description: Maven goals to execute.
+        default: ''
+
+      check_directory:
+        type: string
+        description: Directory to check for build execution.
+        default: ''
+
+jobs:
+  maven:
+    name: Maven ${{ inputs.goals }}
+    runs-on: ${{ inputs.os }}
+    defaults:
+      run: { shell: bash }
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set Up Java
+        uses: graalvm/setup-graalvm@v1
+        with:
+          version: latest
+          java-version: ${{ inputs.java }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          components: native-image,llvm
+          cache: gradle
+          native-image-musl: ${{ inputs.musl }}
+      - name: Build Project
+        run: ./mvnw ${{ inputs.goals }}
+      - name: Diagnose Build
+        if: failure()
+        run: ./mvnw --debug ${{ inputs.goals }}
+      - name: Check Build
+        if: ${{ inputs.check_directory != '' }}
+        run: ls -AlF "${{ inputs.check_directory }}"
