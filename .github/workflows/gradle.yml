@@ -53,9 +53,6 @@ jobs:
           distribution: ${{ inputs.java_distribution }}
           cache: gradle
       - name: Build Project
-        run: ./gradlew ${{ inputs.tasks }}
-      - name: Diagnose Build
-        if: failure()
         run: ./gradlew --info --stacktrace ${{ inputs.tasks }}
       - name: Check Build
         if: ${{ inputs.check_directory != '' }}

@@ -53,9 +53,6 @@ jobs:
           distribution: ${{ inputs.java_distribution }}
           cache: maven
       - name: Build Project
-        run: ./mvnw ${{ inputs.goals }}
-      - name: Diagnose Build
-        if: failure()
         run: ./mvnw --debug ${{ inputs.goals }}
       - name: Check Build
         if: ${{ inputs.check_directory != '' }}

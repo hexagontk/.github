@@ -56,9 +56,6 @@ jobs:
           cache: gradle
           native-image-musl: ${{ inputs.musl }}
       - name: Build Project
-        run: ./gradlew ${{ inputs.tasks }}
-      - name: Diagnose Build
-        if: failure()
         run: ./gradlew --info --stacktrace ${{ inputs.tasks }}
       - name: Check Build
         if: ${{ inputs.check_directory != '' }}
