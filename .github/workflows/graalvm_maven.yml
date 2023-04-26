@@ -52,7 +52,6 @@ jobs:
           version: latest
           java-version: ${{ inputs.java }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          components: native-image,llvm
           cache: gradle
           native-image-musl: ${{ inputs.musl }}
       - name: Build Project
