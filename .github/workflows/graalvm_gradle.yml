@@ -43,6 +43,8 @@ jobs:
   gradle:
     name: Gradle ${{ inputs.tasks }}
     runs-on: ${{ inputs.os }}
+    permissions:
+      contents: read
     defaults:
       run: { shell: bash }
     steps:

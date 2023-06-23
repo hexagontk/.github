@@ -43,6 +43,8 @@ jobs:
   maven:
     name: Maven ${{ inputs.goals }}
     runs-on: ${{ inputs.os }}
+    permissions:
+      contents: read
     defaults:
       run: { shell: bash }
     steps:
