@@ -59,7 +59,7 @@ jobs:
           version: ${{ inputs.version }}
           java-version: ${{ inputs.java }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          cache: gradle
+          cache: maven
           native-image-musl: ${{ inputs.musl }}
       - name: Build Project
         run: ./mvnw --debug ${{ inputs.goals }}
