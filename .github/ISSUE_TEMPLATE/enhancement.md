@@ -1,7 +1,7 @@
 ---
 name: Enhancement
 about: New feature or improvement.
-labels: enhancement
+labels: [ enhancement ]
 ---
 
 **REPLACE WITH ENHANCEMENT DETAILS** (Check below for guidelines)

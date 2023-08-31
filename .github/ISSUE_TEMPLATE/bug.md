@@ -1,7 +1,7 @@
 ---
 name: Bug
 about: Software defect.
-labels: bug
+labels: [ bug ]
 ---
 
 **REPLACE WITH BUG DETAILS** (Check below for guidelines)
