@@ -17,12 +17,12 @@ on:
       java:
         type: string
         description: Java version used to run Gradle.
-        default: 17
+        default: 21
 
       java_distribution:
         type: string
         description: Java distribution used to run Gradle.
-        default: temurin
+        default: graalvm-community
 
       tasks:
         type: string

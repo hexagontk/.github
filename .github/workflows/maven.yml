@@ -17,12 +17,12 @@ on:
       java:
         type: string
         description: Java version used to run Maven.
-        default: 17
+        default: 21
 
       java_distribution:
         type: string
         description: Java distribution used to run Maven.
-        default: temurin
+        default: graalvm-community
 
       goals:
         type: string
