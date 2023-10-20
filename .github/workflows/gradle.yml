@@ -22,7 +22,7 @@ on:
       java_distribution:
         type: string
         description: Java distribution used to run Gradle.
-        default: graalvm-community
+        default: temurin
 
       tasks:
         type: string
