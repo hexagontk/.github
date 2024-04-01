@@ -4,4 +4,4 @@
 #
 # [Details. Used to explain what and why vs. how]
 #
-# https://github.com/hexagonkt/.github/blob/master/commits.md
+# https://github.com/hexagontk/.github/blob/master/commits.md

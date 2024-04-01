@@ -9,12 +9,12 @@ You can use the repository's Discussions tab to ask questions or resolve problem
 ## Report a Bug
 File an issue which comply with the [bug template] requirements.
 
-[bug template]: https://github.com/hexagonkt/.github/blob/master/.github/ISSUE_TEMPLATE/bug.md
+[bug template]: https://github.com/hexagontk/.github/blob/master/.github/ISSUE_TEMPLATE/bug.md
 
 ## Request a Feature
 Create a new issue following the [enhancement template] rules.
 
-[enhancement template]: https://github.com/hexagonkt/.github/blob/master/.github/ISSUE_TEMPLATE/enhancement.md
+[enhancement template]: https://github.com/hexagontk/.github/blob/master/.github/ISSUE_TEMPLATE/enhancement.md
 
 ## Contribute an Improvement
 1. You can check available tasks in the repository issues tab. Issues with the `help wanted` tag in
@@ -35,11 +35,11 @@ Create a new issue following the [enhancement template] rules.
    module definition).
 7. Follow the commit rules defined at the [commit guidelines].
 
-[pull request template]: https://github.com/hexagonkt/.github/blob/master/pull_request_template.md
+[pull request template]: https://github.com/hexagontk/.github/blob/master/pull_request_template.md
 [IntelliJ]: https://www.jetbrains.com/idea
 [Editor Config]: https://editorconfig.org
 [Kotlin Coding Conventions]: https://kotlinlang.org/docs/reference/coding-conventions.html
-[commit guidelines]: https://github.com/hexagonkt/.github/blob/master/commits.md
+[commit guidelines]: https://github.com/hexagontk/.github/blob/master/commits.md
 
 It is recommended that you create a Git pre-push script to check the code before pushing it. As
 this command will be executed before pushing code to the repository (saving you time fixing
