@@ -1,0 +1,52 @@
+
+on:
+  workflow_call:
+    inputs:
+      os:
+        type: string
+        description: OS used to run Gradle.
+        default: ubuntu-latest
+
+      ref:
+        type: string
+        description: Branch to check out.
+        default: ''
+
+      tasks:
+        type: string
+        description: Gradle tasks to execute.
+        default: ''
+
+      check_directory:
+        type: string
+        description: Directory to check for build execution.
+        default: ''
+
+jobs:
+  gradle:
+    name: Gradle ${{ inputs.tasks }}
+    runs-on: ${{ inputs.os }}
+    defaults:
+      run: { shell: bash }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/cache@v4
+        with:
+          path: ~/.sdkman
+          key: "${{ runner.os }}-sdkman-${{ hashFiles('.sdkmanrc') }}"
+          restore-keys: "${{ runner.os }}-sdkman-"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.gradle/caches
+          key: "${{ runner.os }}-gradle-${{ hashFiles('**/*.kts') }}"
+          restore-keys: "${{ runner.os }}-gradle-"
+      - run: curl -s "https://get.sdkman.io?rcupdate=false" | bash
+      - run: |
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk env install
+          ./gradlew --info --stacktrace ${{ inputs.tasks }}
+      - if: ${{ inputs.check_directory != '' }}
+        run: ls -AlF "${{ inputs.check_directory }}"

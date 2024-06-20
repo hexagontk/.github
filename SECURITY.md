@@ -3,13 +3,14 @@
 
 ## Supported Versions
 
-Currently, there are three published releases, and only the last one will get security updates.
+Currently, there are several major releases, the last two ones will get security updates.
 
 | Version | Supported          |
 |---------|--------------------|
 | 1.x.y   | :x:                |
 | 2.x.y   | :x:                |
 | 3.x.y   | :white_check_mark: |
+| 4.x.y   | :white_check_mark: |
 
 ## Reporting a Vulnerability
 

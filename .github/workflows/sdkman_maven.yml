@@ -1,0 +1,52 @@
+
+on:
+  workflow_call:
+    inputs:
+      os:
+        type: string
+        description: OS used to run Maven.
+        default: ubuntu-latest
+
+      ref:
+        type: string
+        description: Branch to check out.
+        default: ''
+
+      goals:
+        type: string
+        description: Maven goals to execute.
+        default: ''
+
+      check_directory:
+        type: string
+        description: Directory to check for build execution.
+        default: ''
+
+jobs:
+  maven:
+    name: Maven ${{ inputs.goals }}
+    runs-on: ${{ inputs.os }}
+    defaults:
+      run: { shell: bash }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/cache@v4
+        with:
+          path: ~/.sdkman
+          key: "${{ runner.os }}-sdkman-${{ hashFiles('.sdkmanrc') }}"
+          restore-keys: "${{ runner.os }}-sdkman-"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: "${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}"
+          restore-keys: "${{ runner.os }}-maven-"
+      - run: curl -s "https://get.sdkman.io?rcupdate=false" | bash
+      - run: |
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk env install
+          ./mvnw --debug ${{ inputs.goals }}
+      - if: ${{ inputs.check_directory != '' }}
+        run: ls -AlF "${{ inputs.check_directory }}"
