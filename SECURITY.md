@@ -14,9 +14,9 @@ Currently, there are several major releases, the last two ones will get security
 
 ## Reporting a Vulnerability
 
-If you find a security problem, please send all the details you have to [support@hexagonkt.com].
+If you find a security problem, please send all the details you have to [support@hexagontk.com].
 
 You can expect the problem to be fixed within a week and published though a new minor version of the
 toolkit.
 
-[support@hexagonkt.com]: mailto:support@hexagonkt.com
+[support@hexagonkt.com]: mailto:support@hexagontk.com
