@@ -40,8 +40,10 @@ jobs:
           restore-keys: "${{ runner.os }}-sdkman-"
       - uses: actions/cache@v4
         with:
-          path: ~/.gradle/caches
-          key: "${{ runner.os }}-gradle-${{ hashFiles('**/*.kts') }}"
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: "${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/*.properties') }}"
           restore-keys: "${{ runner.os }}-gradle-"
       - run: curl -s "https://get.sdkman.io?rcupdate=false" | bash
       - run: |
